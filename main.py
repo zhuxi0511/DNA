@@ -8,7 +8,6 @@ from util import Input, SearchInput
 from ttk import Combobox
 from model import get_result, init
 
-
 class Main(Frame):
     def __init__(self, master=None):
         Frame.__init__(self, master)
@@ -23,7 +22,7 @@ class Main(Frame):
         self.function_mlb = MultiListbox(self, (('target family', 20),('function',20)), height=25)
         self.RNA_in_input = SearchInput(self, text='输入microRNA名字:', 
                 textvariable=self.search_string, 
-                button_function=lambda:get_result(self.search_string, self.target_select_value, self.target_mlb))
+                button_function=lambda:get_result(self.search_string, self.target_select_value, self.target_mlb, self.function_mlb))
         self.split_frame = Frame(self, height=1, width=680, bg='black')
         self.split_frame_2 = Frame(self, height=1, width=680, bg='black')
         self.query_target_label = Label(self, text='查询target')
@@ -66,7 +65,7 @@ def sql():
     init()
     root = Tkinter.Tk()
     root.geometry('800x600')
-    root.title('microRAN查询工具')
+    root.title('microRNA查询工具')
     root.option_add("*Font", "helvetica -12")
 
     main = Main(root)
